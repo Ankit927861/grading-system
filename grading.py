@@ -1,10 +1,12 @@
-import csv
-
+idef calculate_grade(marks):
+ 
 def calculate_grade(marks):
+
+feature-report
     marks = float(marks)
 
     if marks < 0 or marks > 100:
-        raise ValueError("Marks must be between 0 and 100")
+        raise ValueError("Invalid marks")
 
     if marks >= 80:
         return "A"
@@ -16,21 +18,12 @@ def calculate_grade(marks):
         return "F"
 
 
-def read_students(filename):
-    students = []
+def generate_report(filename):
+    students = read_students(filename)
 
-    with open(filename, newline="") as file:
-        reader = csv.DictReader(file)
-
-        for row in reader:
-            name = row["name"]
-            marks = float(row["marks"])
-            grade = calculate_grade(marks)
-
-            students.append({
-                "name": name,
-                "marks": marks,
-                "grade": grade
-            })
-
-    return students
+    for student in students:
+        print(
+            f"{student['name']}: "
+            f"{student['marks']} - "
+            f"{student['grade']}"
+        )
