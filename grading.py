@@ -1,6 +1,5 @@
 import csv
 
-
 def calculate_grade(marks):
     marks = float(marks)
 
